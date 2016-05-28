@@ -2,6 +2,17 @@
 
 BEM tree indentation syntax.
 
+## Usage
+
+```js
+var bis = require('bem-indent-syntax'),
+    // default options
+    options = { tag: '    ', naming: { elem: '__', mod: { name: '_', val: '_' } } };
+
+bis.parse('b1', options); // { block: 'b1' }
+bis.serialize({ block: 'b1' }, options); // 'b1'
+```
+
 Converts
 
 ```
@@ -63,9 +74,6 @@ into
     ]
 }
 ```
+and vice versa.
 
-## Usage
-
-```js
-require('bem-indent-syntax').parse('b1'); // { block: 'b1' }
-```
+Please refer [tests](test/index.js) for some more examples.

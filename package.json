@@ -15,6 +15,7 @@
   "author": "Vladimir Grinenko",
   "license": "MIT",
   "dependencies": {
-    "bem-naming": "^1.0.1"
+    "bem-naming": "^1.0.1",
+    "stringify-object": "^2.3.1"
   }
 }

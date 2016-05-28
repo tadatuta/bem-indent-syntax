@@ -1,7 +1,7 @@
 const assert = require('assert');
 const bis = require('..');
 
-const tests = [
+const parseTests = [
     {
         tmpl: `
 page{title:'ololo',blah:'kuku'}
@@ -83,6 +83,36 @@ b1
     }
 ];
 
-tests.forEach(test => {
+const serializeTests = [
+    {
+        bemjson: {
+            block: 'b1',
+            content: [
+                {
+                    block: 'b2',
+                    mods: { m1: 'v1', m2: true },
+                    mix: { block: 'b4', elem: 'e1' }
+                },
+                {
+                    block: 'b3',
+                    blah: 'ololo',
+                    yo: 'blah',
+                    attrs: { 'data-bem': 'ololo' }
+                },
+                'text content'
+            ]
+        },
+        expected: `b1
+    b2 b2_m1_v1 b2_m2 b4__e1
+    b3{blah:'ololo',yo:'blah'}['data-bem':'ololo']
+    'text content'`
+    }
+];
+
+parseTests.forEach(test => {
     assert.deepEqual(bis.parse(test.tmpl), test.expected);
+});
+
+serializeTests.forEach(test => {
+    assert.deepEqual(bis.serialize(test.bemjson), test.expected);
 });
