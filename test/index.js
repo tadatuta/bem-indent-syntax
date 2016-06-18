@@ -11,8 +11,7 @@ page{title:'ololo',blah:'kuku'}
             'i am text content'
             'moar'
         main__e2
-    footer
-`,
+    footer`,
         expected: {
             block: 'page',
             title: 'ololo',
@@ -36,7 +35,6 @@ page{title:'ololo',blah:'kuku'}
                     block: 'main',
                     content: [
                         {
-                            block: 'main',
                             elem: 'e1',
                             attrs: {
                                 color: 'red'
@@ -47,7 +45,6 @@ page{title:'ololo',blah:'kuku'}
                             ]
                         },
                         {
-                            block: 'main',
                             elem: 'e2'
                         }
                     ]
@@ -66,13 +63,11 @@ page{title:'ololo',blah:'kuku'}
         tmpl: `
 b1
     b1__e1
-    b2
-`,
+    b2`,
         expected: {
             block: 'b1',
             content: [
                 {
-                    block: 'b1',
                     elem: 'e1'
                 },
                 {
@@ -92,12 +87,12 @@ b1
     },
     {
         tmpl: 'b1 __e1',
-        expected: { block: 'b1', mix: { block: 'b1', elem: 'e1' } }
+        expected: { block: 'b1', mix: { elem: 'e1' } }
     },
     {
         tmpl: `b1
     __e1`,
-        expected: { block: 'b1', content: { block: 'b1', elem: 'e1' } }
+        expected: { block: 'b1', content: { elem: 'e1' } }
     },
     {
         tmpl: `b1
@@ -107,10 +102,7 @@ b1
             block: 'b1',
             content: {
                 block: 'b2',
-                content: {
-                    block: 'b2',
-                    elem: 'e2'
-                }
+                content: { elem: 'e2' }
             }
         }
     },
@@ -178,6 +170,17 @@ b1
             attrs: {
                 field1: 'val1',
                 field2: 'val2'
+            }
+        }
+    },
+    {
+        tmpl: `b1
+    b2__e1`,
+        expected: {
+            block: 'b1',
+            content: {
+                block: 'b2',
+                elem: 'e1'
             }
         }
     }
