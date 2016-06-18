@@ -16,6 +16,6 @@
   "license": "MIT",
   "dependencies": {
     "bem-naming": "^1.0.1",
-    "stringify-object": "^2.3.1"
+    "stringify-object": "^2.4.0"
   }
 }
