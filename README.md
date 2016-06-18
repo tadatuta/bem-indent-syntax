@@ -11,6 +11,7 @@ var bis = require('bem-indent-syntax'),
     options = { tag: '    ', naming: { elem: '__', mod: { name: '_', val: '_' } } };
 
 bis.parse('b1', options); // { block: 'b1' }
+bis.stringify('b1', options); // '{ block: 'b1' }'
 bis.serialize({ block: 'b1' }, options); // 'b1'
 ```
 

@@ -186,6 +186,20 @@ b1
     }
 ];
 
+const stringifyTests = [
+    {
+        tmpl: `b1
+    b2__e1`,
+        expected: `{
+    block: 'b1',
+    content: {
+        block: 'b2',
+        elem: 'e1'
+    }
+}`
+    }
+];
+
 const serializeTests = [
     {
         bemjson: {
@@ -236,6 +250,10 @@ const serializeTests = [
 
 parseTests.forEach(test => {
     assert.deepEqual(bis.parse(test.tmpl, test.options || {}), test.expected);
+});
+
+stringifyTests.forEach(test => {
+    assert.deepEqual(bis.stringify(test.tmpl, test.options || {}), test.expected);
 });
 
 serializeTests.forEach(test => {
