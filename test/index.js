@@ -183,6 +183,15 @@ b1
                 elem: 'e1'
             }
         }
+    },
+    {
+        tmpl: '__elem_mod_val',
+        expected: {
+            elem: 'elem',
+            elemMods: {
+                mod: 'val'
+            }
+        }
     }
 ];
 
