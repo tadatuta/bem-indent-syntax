@@ -97,7 +97,7 @@ b1
     {
         tmpl: `b1
     __e1`,
-        expected: { block: 'b1', content: [{ block: 'b1', elem: 'e1' }] }
+        expected: { block: 'b1', content: { block: 'b1', elem: 'e1' } }
     },
     {
         tmpl: `b1
@@ -105,22 +105,29 @@ b1
         __e2`,
         expected: {
             block: 'b1',
-            content: [
-                {
+            content: {
+                block: 'b2',
+                content: {
                     block: 'b2',
-                    content: [
-                        {
-                            block: 'b2',
-                            elem: 'e2'
-                        }
-                    ]
+                    elem: 'e2'
                 }
-            ]
+            }
         }
     },
 ];
 
 const serializeTests = [
+    {
+        bemjson: {
+            block: 'b1',
+            content: {
+                elem: 'e1'
+            }
+        },
+        expected: `b1
+    b1__e1
+`
+    },
     {
         bemjson: {
             block: 'b1',
