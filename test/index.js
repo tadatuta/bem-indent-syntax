@@ -155,6 +155,32 @@ b1
             }
         }
     },
+    {
+        tmpl: `b1{ field1: 'val1', field2: 'val2' }`,
+        expected: {
+            block: 'b1',
+            field1: 'val1',
+            field2: 'val2'
+        }
+    },
+    {
+        tmpl: `b1{field1: 'val1', field2:'val2' }`,
+        expected: {
+            block: 'b1',
+            field1: 'val1',
+            field2: 'val2'
+        }
+    },
+    {
+        tmpl: `b1[ field1: 'val1', field2: 'val2' ]`,
+        expected: {
+            block: 'b1',
+            attrs: {
+                field1: 'val1',
+                field2: 'val2'
+            }
+        }
+    }
 ];
 
 const serializeTests = [
