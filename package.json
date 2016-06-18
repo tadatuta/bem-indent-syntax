@@ -4,8 +4,15 @@
   "description": "BEM tree indentation syntax",
   "main": "index.js",
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "make": "echo '' | bem-xjst -o lib/bemhtml.js",
+    "prepublish": "npm run make"
   },
+  "files": [
+    "lib",
+    "lib/bemhtml.js",
+    "index.js"
+  ],
   "keywords": [
     "bem",
     "bemjson",
@@ -16,6 +23,10 @@
   "license": "MIT",
   "dependencies": {
     "bem-naming": "^1.0.1",
+    "js-beautify": "^1.6.3",
     "stringify-object": "^2.4.0"
+  },
+  "devDependencies": {
+    "bem-xjst": "^6.5.1"
   }
 }

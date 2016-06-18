@@ -248,6 +248,16 @@ const serializeTests = [
     }
 ];
 
+const bis2htmlTests = [
+    {
+        tmpl: `b1
+    b2__e1`,
+        expected: `<div class="b1">
+    <div class="b2__e1"></div>
+</div>`
+    }
+];
+
 parseTests.forEach(test => {
     assert.deepEqual(bis.parse(test.tmpl, test.options || {}), test.expected);
 });
@@ -258,4 +268,8 @@ stringifyTests.forEach(test => {
 
 serializeTests.forEach(test => {
     assert.deepEqual(bis.serialize(test.bemjson, test.options || {}), test.expected);
+});
+
+bis2htmlTests.forEach(test => {
+    assert.deepEqual(bis.html(test.tmpl, test.options || {}), test.expected);
 });

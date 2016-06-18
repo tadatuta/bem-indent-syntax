@@ -7,12 +7,21 @@ BEM tree indentation syntax.
 ```js
 var bis = require('bem-indent-syntax'),
     // default options
-    // for naming conf see https://github.com/bem-sdk/bem-naming#custom-naming-convention
-    options = { tag: '    ', naming: { elem: '__', mod: { name: '_', val: '_' } } };
+    options = {
+        tag: '    ',
+        // for naming conf see https://github.com/bem-sdk/bem-naming#custom-naming-convention
+        naming: { elem: '__', mod: { name: '_', val: '_' } },
+        // for beautify conf see https://www.npmjs.com/package/js-beautify#css--html
+        beautify: {}
+    };
 
 bis.parse('b1', options); // { block: 'b1' }
 bis.stringify('b1', options); // '{ block: 'b1' }'
 bis.serialize({ block: 'b1' }, options); // 'b1'
+bis.html(`b1
+    b2__e1`, options) // <div class="b1">
+                      //     <div class="b2__e1"></div>
+                      // </div>`
 ```
 
 Converts
