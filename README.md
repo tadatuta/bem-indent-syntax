@@ -7,6 +7,7 @@ BEM tree indentation syntax.
 ```js
 var bis = require('bem-indent-syntax'),
     // default options
+    // for naming conf see https://github.com/bem-sdk/bem-naming#custom-naming-convention
     options = { tag: '    ', naming: { elem: '__', mod: { name: '_', val: '_' } } };
 
 bis.parse('b1', options); // { block: 'b1' }

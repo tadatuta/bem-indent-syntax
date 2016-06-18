@@ -80,6 +80,11 @@ b1
                 }
             ]
         }
+    },
+    {
+        tmpl: 'b1 b1--m1',
+        expected: { block: 'b1', mods: { m1: true } },
+        options: { naming: 'two-dashes' }
     }
 ];
 
@@ -106,13 +111,24 @@ const serializeTests = [
     b2 b2_m1_v1 b2_m2 b4__e1
     b3{blah:'ololo',yo:'blah'}['data-bem':'ololo']
     'text content'`
+    },
+    {
+        bemjson: {
+            block: 'b1',
+            mods: { m1: true }
+        },
+        expected: `b1 b1--m1
+`,
+        options: {
+            naming: 'two-dashes'
+        }
     }
 ];
 
 parseTests.forEach(test => {
-    assert.deepEqual(bis.parse(test.tmpl), test.expected);
+    assert.deepEqual(bis.parse(test.tmpl, test.options || {}), test.expected);
 });
 
 serializeTests.forEach(test => {
-    assert.deepEqual(bis.serialize(test.bemjson), test.expected);
+    assert.deepEqual(bis.serialize(test.bemjson, test.options || {}), test.expected);
 });
