@@ -114,6 +114,18 @@ b1
             }
         }
     },
+    {
+        tmpl: `{tag:'div'}`,
+        expected: {
+            tag: 'div'
+        }
+    },
+    {
+        tmpl: `['data-bem':'test']`,
+        expected: {
+            attrs: { 'data-bem': 'test' }
+        }
+    },
 ];
 
 const serializeTests = [
