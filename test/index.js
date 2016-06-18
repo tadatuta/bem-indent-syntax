@@ -85,7 +85,39 @@ b1
         tmpl: 'b1 b1--m1',
         expected: { block: 'b1', mods: { m1: true } },
         options: { naming: 'two-dashes' }
-    }
+    },
+    {
+        tmpl: 'b1 _m1',
+        expected: { block: 'b1', mods: { m1: true } }
+    },
+    {
+        tmpl: 'b1 __e1',
+        expected: { block: 'b1', mix: { block: 'b1', elem: 'e1' } }
+    },
+    {
+        tmpl: `b1
+    __e1`,
+        expected: { block: 'b1', content: [{ block: 'b1', elem: 'e1' }] }
+    },
+    {
+        tmpl: `b1
+    b2
+        __e2`,
+        expected: {
+            block: 'b1',
+            content: [
+                {
+                    block: 'b2',
+                    content: [
+                        {
+                            block: 'b2',
+                            elem: 'e2'
+                        }
+                    ]
+                }
+            ]
+        }
+    },
 ];
 
 const serializeTests = [
