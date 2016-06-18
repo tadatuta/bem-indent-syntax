@@ -126,6 +126,35 @@ b1
             attrs: { 'data-bem': 'test' }
         }
     },
+    {
+        tmpl: `{tag:'div'} {tag:'span'}`,
+        expected: {
+            tag: 'div',
+            mix: {
+                tag: 'span'
+            }
+        }
+    },
+    {
+        tmpl: `b1{tag:'div'} b2{tag:'span'}`,
+        expected: {
+            block: 'b1',
+            tag: 'div',
+            mix: {
+                block: 'b2',
+                tag: 'span'
+            }
+        }
+    },
+    {
+        tmpl: `[tag:'div'] [tag:'span']`,
+        expected: {
+            attrs: { tag: 'div' },
+            mix: {
+                attrs: { tag: 'span' }
+            }
+        }
+    },
 ];
 
 const serializeTests = [
