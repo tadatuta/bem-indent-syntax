@@ -210,6 +210,39 @@ b1
                 { block: 'b4', mods: { type: 'list', view: 'main' } }
             ]
         }
+    },
+    {
+        tmpl: `b1
+    b2 _m1`,
+        expected: {
+            block: 'b1',
+            content: {
+                block: 'b2',
+                mods: { m1: true }
+            }
+        }
+    },
+    {
+        tmpl: `b1
+    b2 _m1 _m2`,
+        expected: {
+            block: 'b1',
+            content: {
+                block: 'b2',
+                mods: { m1: true, m2: true }
+            }
+        }
+    },
+    {
+        tmpl: `b1
+    __e1 _m1`,
+        expected: {
+            block: 'b1',
+            content: {
+                elem: 'e1',
+                elemMods: { m1: true }
+            }
+        }
     }
 ];
 
