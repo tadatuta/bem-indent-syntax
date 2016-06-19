@@ -236,7 +236,7 @@ const serializeTests = [
             }
         },
         expected: `b1
-    b1__e1
+    __e1
 `
     },
     {
@@ -260,7 +260,8 @@ const serializeTests = [
         expected: `b1
     b2 b2_m1_v1 b2_m2 b4__e1
     b3{blah:'ololo',yo:'blah'}['data-bem':'ololo']
-    'text content'`
+    'text content'
+`
     },
     {
         bemjson: {
@@ -272,6 +273,59 @@ const serializeTests = [
         options: {
             naming: 'two-dashes'
         }
+    },
+    {
+        bemjson: {
+            block: 'page',
+            title: 'ololo',
+            blah: 'kuku',
+            content: [
+                {
+                    block: 'header',
+                    mods: {
+                        type: 'main'
+                    },
+                    mix: [
+                        {
+                            'block': 'b2'
+                        },
+                        {
+                            'block': 'b4'
+                        }
+                    ]
+                },
+                {
+                    block: 'main',
+                    content: [
+                        {
+                            elem: 'e1',
+                            attrs: {
+                                color: 'red'
+                            },
+                            content: [
+                                'i am text content',
+                                'moar'
+                            ]
+                        },
+                        {
+                            elem: 'e2'
+                        }
+                    ]
+                },
+                {
+                    block: 'footer'
+                }
+            ]
+        },
+        expected: `page{title:'ololo',blah:'kuku'}
+    header header_type_main b2 b4
+    main
+        __e1[color:'red']
+            'i am text content'
+            'moar'
+        __e2
+    footer
+`
     }
 ];
 
