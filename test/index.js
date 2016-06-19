@@ -192,6 +192,24 @@ b1
                 mod: 'val'
             }
         }
+    },
+    {
+        tmpl: 'b1 b2 _type_list _view_main',
+        expected: {
+            block: 'b1',
+            mix: { block: 'b2', mods: { type: 'list', view: 'main' } }
+        }
+    },
+    {
+        tmpl: 'header _type_main _view_list b2 b4 _type_list _view_main',
+        expected: {
+            block: 'header',
+            mods: { type: 'main', view: 'list' },
+            mix: [
+                { block: 'b2' },
+                { block: 'b4', mods: { type: 'list', view: 'main' } }
+            ]
+        }
     }
 ];
 
@@ -268,7 +286,16 @@ const bis2htmlTests = [
 ];
 
 parseTests.forEach(test => {
-    assert.deepEqual(bis.parse(test.tmpl, test.options || {}), test.expected);
+    try {
+        assert.deepEqual(bis.parse(test.tmpl, test.options || {}), test.expected);
+    } catch(err) {
+        console.log('Error in parsing', test.tmpl);
+        console.log('Expected:');
+        console.dir(bis.parse(test.tmpl, test.options || {}), { depth: null });
+        console.log('to be:');
+        console.dir(test.expected, { depth: null });
+        throw new Error(err);
+    }
 });
 
 stringifyTests.forEach(test => {
