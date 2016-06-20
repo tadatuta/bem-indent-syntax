@@ -243,6 +243,14 @@ b1
                 elemMods: { m1: true }
             }
         }
+    },
+    {
+        tmpl: `b1
+    \`this.ctx.content\``,
+        expected: {
+            block: 'b1',
+            content: '%%%%%this.ctx.content%%%%%'
+        }
     }
 ];
 
@@ -256,6 +264,14 @@ const stringifyTests = [
         block: 'b2',
         elem: 'e1'
     }
+}`
+    },
+    {
+        tmpl: `b1
+    \`this.ctx.content\``,
+        expected: `{
+    block: 'b1',
+    content: this.ctx.content
 }`
     }
 ];
